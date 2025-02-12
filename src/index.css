@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nome_api {
+  color: black;
+  background-color: red;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Section-personagens {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1085px;
+}
+
+.App-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+  
+}
+
+.App_title {
+  font-family: "Merriweather", serif;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 0 24px;
+  margin: 0;
+}
+
+.App_personagens {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.personagem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: white;
+  gap: 8px;
+  padding: 32px 24px;
+}
+
+.personagem_imagem {
+  max-width: 400px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+}
+
+.personagem_nome {
+  font-family: "Pirata One", serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 24px 0;
+}
+
+.personagem_recompensa {
+  font-family: "Merriweather", serif;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 8px 0;
+}

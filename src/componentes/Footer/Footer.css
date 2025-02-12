@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #DCDCDC;
+    width: 100%;
+    margin: 40px 0 12px 0;
+}
+
+.info {
+    display: flex;
+    padding: 16px;
+    gap: 18px;
+}
+
+.info__link img {
+    width: 32px;
+}
+
+.footer_text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 12px;
+}
+
+.footer_text {
+    font-family: "Merriweather", serif;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+}
