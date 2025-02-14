@@ -1,4 +1,4 @@
-.personagem {
+.pokemon {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -7,23 +7,27 @@
     padding: 32px 24px;
 }
 
-.personagem_imagem {
+.pokemon_image {
     max-width: 400px;
     max-height: 400px;
     width: auto;
     height: auto;
 }
 
-.personagem_nome {
+.pokemon_number {
+    font-family: "Pirata One", serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.pokemon_name {
     font-family: "Pirata One", serif;
     font-size: 36px;
     font-weight: 600;
-    margin: 24px 0;
 }
 
-.personagem_recompensa {
+.pokemon_types {
     font-family: "Merriweather", serif;
     font-size: 24px;
     font-weight: 300;
-    margin: 8px 0;
 }

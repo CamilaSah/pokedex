@@ -1,7 +1,7 @@
 import Banner from './componentes/Banner/Banner';
 import Personagem from './componentes/Personagem';
 import Footer from './componentes/Footer';
-import Pokedex from './services/DadosUsuario';
+import Pokedex from './services/Pokedex';
 
 function App() {
   const personagens = [
