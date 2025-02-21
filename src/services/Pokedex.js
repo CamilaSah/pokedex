@@ -13,21 +13,7 @@ const Pokedex = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data.pokemon_entries);
-        const pokemonDetails = data.pokemon_entries.map((entry) => {
-          return fetch(`https://pokeapi.co/api/v2/pokemon/${entry.pokemon_species.name}`)
-            .then((res) => res.json())
-            .then((details) => ({
-              id: details.id,
-              name: details.name,
-              image: details.sprites.front_default,
-              types: details.types,
-            }))
-            .catch((error) => {
-              console.log(error);
-              setLoading(false);
-            })
-        })
-        setPokemons(pokemonDetails);
+        setPokemons(data.pokemon_entries);
         setLoading(false);
       })
       .catch((error) => {
@@ -45,7 +31,7 @@ const Pokedex = () => {
   return (
     <div className='pokemons'>
       {pokemons.map((pokemon) => (
-        <PokemonListItem id={pokemon.name} image={pokemon.sprites.front_default} number={pokemon.number} name={pokemon.name} types={pokemon.types} />
+        <PokemonListItem pokeName={pokemon.pokemon_species.name} key={pokemon.entry_number}  />
       ))}
     </div>
   )
