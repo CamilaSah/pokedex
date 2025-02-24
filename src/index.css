@@ -48,7 +48,7 @@ code {
   margin: 0;
 }
 
-.App_personagens {
+.App_pokemons {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
