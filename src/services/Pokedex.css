@@ -1,7 +1,3 @@
-.pokemons {
+.PokedexContainer {
     display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-    gap: 16px;
-    margin: 40px 0;
 }

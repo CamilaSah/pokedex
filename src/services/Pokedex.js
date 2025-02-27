@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Grid2 } from "@mui/material";
 import PokemonListItem from '../componentes/PokemonListItem';
 
 const url = 'https://pokeapi.co/api/v2/pokedex/2/';
@@ -29,10 +30,14 @@ const Pokedex = () => {
   }
 
   return (
-    <div className='pokemons'>
-      {pokemons.map((pokemon) => (
-        <PokemonListItem pokeName={pokemon.pokemon_species.name} key={pokemon.entry_number}  />
-      ))}
+    <div className='PokedexContainer'>
+      <Grid2 container spacing={4}>
+        {pokemons.map((pokemon) => (
+          <Grid2 size={3}>
+            <PokemonListItem pokeName={pokemon.pokemon_species.name} key={pokemon.entry_number} />
+          </Grid2>
+        ))}
+      </Grid2>
     </div>
   )
 }
