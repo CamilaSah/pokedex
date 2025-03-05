@@ -62,7 +62,7 @@ const PokemonListItem = (props) => {
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {pokemon.number}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "'Oxanium', sans-serif"}}> 
             {pokemon.name}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
