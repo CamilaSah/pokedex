@@ -6,6 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import PokemonType from '../PokemonType';
 
 const PokemonListItem = (props) => {
 
@@ -24,16 +25,8 @@ const PokemonListItem = (props) => {
           image: data.sprites.front_default,
           number: data.id,
           name: data.name,
-          types: "",
+          types: data.types,
         };
-
-        for (let index = 0; index < data.types.length; index++) {
-          const name = data.types[index].type.name;
-          pokeObj.types += `${name}`;
-          if (index < data.types.length - 1) {
-            pokeObj.types += ', ';
-          }
-        }
         setPokemon(pokeObj)
         setLoading(false);
       })
@@ -49,6 +42,11 @@ const PokemonListItem = (props) => {
     )
   }
 
+  // Função para capitalizar a primeira letra
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -60,14 +58,21 @@ const PokemonListItem = (props) => {
         />
         <CardContent>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {pokemon.number}
+            #000{pokemon.number}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "'Oxanium', sans-serif"}}> 
-            {pokemon.name}
+          <Typography 
+            gutterBottom 
+            variant="h5" 
+            component="div" 
+            sx={{ fontFamily: "'Oxanium', sans-serif", fontWeight: 600 }}
+          >
+            {capitalizeFirstLetter(pokemon.name)}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {pokemon.types}
-          </Typography>
+          <div className='pokemon_types'>
+            {pokemon.types.map((type, index) => {
+              return <PokemonType key={index} pokeType={type.name} />
+            })}
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>
