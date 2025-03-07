@@ -69,8 +69,8 @@ const PokemonListItem = (props) => {
             {capitalizeFirstLetter(pokemon.name)}
           </Typography>
           <div className='pokemon_types'>
-            {pokemon.types.map((type, index) => {
-              return <PokemonType key={index} pokeType={type.name} />
+            {pokemon.types.map((type) => {
+              return <PokemonType key={type.slot} pokeType={type.type.name} />
             })}
           </div>
         </CardContent>
