@@ -48,11 +48,11 @@ const PokemonListItem = (props) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 250 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="fit-content"
           image={pokemon.image}
           alt='Imagem do pokémon'
         />

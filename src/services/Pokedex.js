@@ -31,9 +31,12 @@ const Pokedex = () => {
 
   return (
     <div className='PokedexContainer'>
-      <Grid2 container spacing={4}>
+      <Grid2
+        container
+        spacing={2}
+      >
         {pokemons.map((pokemon) => (
-          <Grid2 size={3}>
+          <Grid2 display="flex" justifyContent="center" alignItems="center" size={3}>
             <PokemonListItem pokeName={pokemon.pokemon_species.name} key={pokemon.entry_number} />
           </Grid2>
         ))}

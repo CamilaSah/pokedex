@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Banner />
       <h2 className='App_title'>Saiba mais sobre o seu pokémon favorito</h2>
-      <Container maxWidth="false">
+      <Container maxWidth="md">
         <Pokedex />
       </Container>
       <Footer />
