@@ -3,7 +3,7 @@ import './Banner.css'
 function Banner() {
     return (
         <header className='banner'>
-            <img src="/imagens/logo.png" alt="Logo do One Piece"/>
+            <img src="/imagens/pokemon-logo.svg" alt="Logo do Pokémon"/>
         </header>
     )
 } 
