@@ -13,6 +13,8 @@ const PokemonType = (props) => {
             {capitalizeFirstLetter(props.pokeType)}
         </span>
     )
+
+    
 }
 
 export default PokemonType
