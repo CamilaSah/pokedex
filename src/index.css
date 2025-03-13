@@ -42,13 +42,6 @@ code {
   
 }
 
-.App_title {
-  font-family: "Merriweather", serif;
-  font-size: 28px;
-  font-weight: 600;
-  padding: 0 24px;
-  margin: 0;
-}
 
 .App_pokemons {
   display: flex;

@@ -58,7 +58,7 @@ const PokemonListItem = (props) => {
         />
         <CardContent>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            #000{pokemon.number}
+            #{String(pokemon.number).padStart(3,"0")}
           </Typography>
           <Typography 
             gutterBottom 
