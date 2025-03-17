@@ -42,7 +42,6 @@ code {
   
 }
 
-
 .App_pokemons {
   display: flex;
   flex-flow: row wrap;

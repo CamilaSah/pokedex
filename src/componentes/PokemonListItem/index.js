@@ -16,11 +16,10 @@ const PokemonListItem = (props) => {
   useEffect(() => {
 
     setLoading(true);
-    console.log('Oi')
     fetch(`https://pokeapi.co/api/v2/pokemon/${props.pokeName}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const pokeObj = {
           image: data.sprites.front_default,
           number: data.id,
