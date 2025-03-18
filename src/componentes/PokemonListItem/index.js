@@ -24,7 +24,7 @@ const PokemonListItem = (props) => {
           image: data.sprites.front_default,
           number: data.id,
           name: data.name,
-          types: data.types,
+          types: data.types.map((t) => t.type.name),
         };
         setPokemon(pokeObj)
         setLoading(false);

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import SortSelect from '../componentes/SortSelect';
+import PokemonFilter from '../componentes/PokemonFilter';
 import { Grid2 } from "@mui/material";
 import PokemonListItem from '../componentes/PokemonListItem';
 
@@ -9,6 +10,7 @@ const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sortedPokemons, setSortedPokemons] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -38,6 +40,15 @@ const Pokedex = () => {
     setSortedPokemons(sorted);
   };
 
+  const filteredPokemons = sortedPokemons.filter((pokemon) => {
+    if (selectedTypes.length === 0) return true; // Se nenhum tipo for selecionado, mostra todos
+
+    return pokemon.types?.some((type) => selectedTypes.includes(type));
+  });
+
+  setSelectedTypes(filteredPokemons);
+  
+
   if (loading) {
     return (
       <div>Carregando...</div>
@@ -47,11 +58,12 @@ const Pokedex = () => {
   return (
     <div className='PokedexContainer'>
       <SortSelect onSortChange={handleSortChange} />
+      <PokemonFilter selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes}/>
       <Grid2
         container
         spacing={2}
       >
-        {sortedPokemons.map((pokemon) => (
+        {filteredPokemons.map((pokemon) => (
           <Grid2 key={pokemon.entry_number} display="flex" justifyContent="center" alignItems="center" size={3}>
             <PokemonListItem pokeName={pokemon.pokemon_species.name} />
           </Grid2>
