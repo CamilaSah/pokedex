@@ -14,27 +14,48 @@ const Pokedex = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
+
+    const fetchPokemonData = async () => {
+      try {
+        // 1. Buscar a lista de Pokémon
+        const response = await fetch(url);
+        const data = await response.json();
+        const pokemonEntries = data.pokemon_entries;
         console.log(data.pokemon_entries);
-        setPokemons(data.pokemon_entries);
-        setSortedPokemons(data.pokemon_entries);
+
+        // 2. Buscar os detalhes de cada Pokémon
+        const pokemonDetails = await Promise.all(
+          pokemonEntries.map(async (pokemon) => {
+            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.pokemon_species.name}`);
+            const dataDetails = await res.json();
+            return {
+              image: dataDetails.sprites.front_default,
+              number: dataDetails.id,
+              name: dataDetails.name,
+              types: dataDetails.types.map((t) => t.type.name),
+            };
+          })
+        )
+        console.log("Todos os detalhes dos Pokémon:", pokemonDetails);
+        setPokemons(pokemonDetails);
+        setSortedPokemons(pokemonDetails);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
+      } catch (error) {
+        console.log("Erro ao buscar os Pokémons:", error);
         setLoading(false);
-      })
-  }, []);
+      }
+  }
+  // Chamando a função
+  fetchPokemonData();   
+}, []);
 
   const handleSortChange = (sortType) => {
     let sorted = [...pokemons];
 
     if (sortType === 'A-Z') {
-      sorted.sort((a, b) => a.pokemon_species.name.localeCompare(b.pokemon_species.name));
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortType === 'Menor número') {
-      sorted.sort((a, b) => a.entry_number - b.entry_number);
+      sorted.sort((a, b) => a.number - b.number);
     }
 
     setSortedPokemons(sorted);
@@ -42,12 +63,11 @@ const Pokedex = () => {
 
   const filteredPokemons = sortedPokemons.filter((pokemon) => {
     if (selectedTypes.length === 0) return true; // Se nenhum tipo for selecionado, mostra todos
-
-    return pokemon.types?.some((type) => selectedTypes.includes(type));
+    console.log(pokemon.types);
+    console.log(selectedTypes);
+    console.log(pokemon.types?.some((type) => selectedTypes[0].value.includes(type)));
+    return pokemon.types?.some((type) => selectedTypes[0].value.includes(type));
   });
-
-  setSelectedTypes(filteredPokemons);
-  
 
   if (loading) {
     return (
@@ -64,8 +84,8 @@ const Pokedex = () => {
         spacing={2}
       >
         {filteredPokemons.map((pokemon) => (
-          <Grid2 key={pokemon.entry_number} display="flex" justifyContent="center" alignItems="center" size={3}>
-            <PokemonListItem pokeName={pokemon.pokemon_species.name} />
+          <Grid2 key={pokemon.number} display="flex" justifyContent="center" alignItems="center" size={3}>
+            <PokemonListItem pokeName={pokemon.name} pokeImage={pokemon.image} pokeNumber={pokemon.number} pokeTypes={pokemon.types}/>
           </Grid2>
         ))}
       </Grid2>

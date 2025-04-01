@@ -7,8 +7,83 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
-const pokemonsType = ['Fire','Water','Grass','Electric','Psychic','Ice','Dragon','Dark','Fairy','Normal','Fighting','Flying','Poison','Ground','Rock','Bug','Ghost','Steel'];
-const sortedPokemonsType = pokemonsType.slice().sort();
+
+const pokemonsType = [
+  {
+    label: 'Fire',
+    value: 'fire',
+  },
+  {
+    label: 'Water',
+    value: 'water',
+  },
+  {
+    label: 'Grass',
+    value: 'grass',
+  },
+  {
+    label: 'Electric',
+    value: 'electric',
+  },
+  {
+    label: 'Psychic',
+    value: 'psychic',
+  },
+  {
+    label: 'Ice',
+    value: 'ice',
+  },
+  {
+    label: 'Dragon',
+    value: 'dragon',
+  },
+  {
+    label: 'Dark',
+    value: 'dark',
+  },
+  {
+    label: 'Fairy',
+    value: 'fairy',
+  },
+  {
+    label: 'Normal',
+    value: 'normal',
+  },
+  {
+    label: 'Fighting',
+    value: 'fighting',
+  },
+  {
+    label: 'Flying',
+    value: 'flying',
+  },
+  {
+    label: 'Poison',
+    value: 'poison',
+  },
+  {
+    label: 'Ground',
+    value: 'ground',
+  },
+  {
+    label: 'Rock',
+    value: 'rock',
+  },
+  {
+    label: 'Bug',
+    value: 'bug',
+  },
+  {
+    label: 'Ghost',
+    value: 'ghost',
+  },
+  {
+    label: 'Steel',
+    value: 'steel',
+  },
+];
+
+const sortedPokemonsType = pokemonsType.sort((a,b) => a.label.localeCompare(b.label));
 
 const PokemonFilter = ({ selectedTypes, setSelectedTypes }) => {
 
@@ -20,7 +95,7 @@ const PokemonFilter = ({ selectedTypes, setSelectedTypes }) => {
       value={selectedTypes}
       disableCloseOnSelect
       onChange={(event, newValue) => setSelectedTypes(newValue)}
-      getOptionLabel={(option) => option}
+      getOptionLabel={(option) => option.label}
       renderOption={(props, option, { selected }) => {
         const { key, ...optionProps } = props;
         return (
@@ -31,7 +106,7 @@ const PokemonFilter = ({ selectedTypes, setSelectedTypes }) => {
               style={{ marginRight: 8 }}
               checked={selected}
             />
-            {option}
+            {option.label}
           </li>
         );
       }}

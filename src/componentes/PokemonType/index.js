@@ -9,7 +9,7 @@ const PokemonType = (props) => {
 
     return (
         /*console.log(props.pokeType)*/
-        <span key={props.key} className={`type-${props.pokeType} badge`}>
+        <span key={props.number} className={`type-${props.pokeType} badge`}>
             {capitalizeFirstLetter(props.pokeType)}
         </span>
     )
