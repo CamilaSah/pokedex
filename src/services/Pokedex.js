@@ -44,10 +44,10 @@ const Pokedex = () => {
         console.log("Erro ao buscar os Pokémons:", error);
         setLoading(false);
       }
-  }
-  // Chamando a função
-  fetchPokemonData();   
-}, []);
+    }
+    // Chamando a função
+    fetchPokemonData();
+  }, []);
 
   const handleSortChange = (sortType) => {
     let sorted = [...pokemons];
@@ -62,11 +62,23 @@ const Pokedex = () => {
   };
 
   const filteredPokemons = sortedPokemons.filter((pokemon) => {
-    if (selectedTypes.length === 0) return true; // Se nenhum tipo for selecionado, mostra todos
-    console.log(pokemon.types);
-    console.log(selectedTypes);
-    console.log(pokemon.types?.some((type) => selectedTypes[0].value.includes(type)));
-    return pokemon.types?.some((type) => selectedTypes[0].value.includes(type));
+    if (selectedTypes.length === 0) {
+      console.log(pokemon.types);
+      console.log(selectedTypes);
+      return true; // Se nenhum tipo for selecionado, mostra todos
+    }
+    // return !!selectedTypes.find((type) => pokemon.types.includes(type.value));
+
+    for (let indexSelected = 0; indexSelected < selectedTypes.length; indexSelected++) {
+      const selectedTypeValue = selectedTypes[indexSelected].value;
+      for (let pokeTypeIndex = 0; pokeTypeIndex < pokemon.types.length; pokeTypeIndex++) {
+        const pokeType = pokemon.types[pokeTypeIndex];
+        if (pokeType === selectedTypeValue) {
+          return true;
+        }
+      }
+    }
+    return false;
   });
 
   if (loading) {
@@ -78,14 +90,14 @@ const Pokedex = () => {
   return (
     <div className='PokedexContainer'>
       <SortSelect onSortChange={handleSortChange} />
-      <PokemonFilter selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes}/>
+      <PokemonFilter selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
       <Grid2
         container
         spacing={2}
       >
         {filteredPokemons.map((pokemon) => (
           <Grid2 key={pokemon.number} display="flex" justifyContent="center" alignItems="center" size={3}>
-            <PokemonListItem pokeName={pokemon.name} pokeImage={pokemon.image} pokeNumber={pokemon.number} pokeTypes={pokemon.types}/>
+            <PokemonListItem pokeName={pokemon.name} pokeImage={pokemon.image} pokeNumber={pokemon.number} pokeTypes={pokemon.types} />
           </Grid2>
         ))}
       </Grid2>
