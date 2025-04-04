@@ -3,3 +3,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.SelectFilterButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}

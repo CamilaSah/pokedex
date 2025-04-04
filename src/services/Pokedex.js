@@ -3,6 +3,7 @@ import SortSelect from '../componentes/SortSelect';
 import PokemonFilter from '../componentes/PokemonFilter';
 import { Grid2 } from "@mui/material";
 import PokemonListItem from '../componentes/PokemonListItem';
+import Box from '@mui/material/Box';
 
 const url = 'https://pokeapi.co/api/v2/pokedex/2/';
 
@@ -89,8 +90,10 @@ const Pokedex = () => {
 
   return (
     <div className='PokedexContainer'>
-      <SortSelect onSortChange={handleSortChange} />
-      <PokemonFilter selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+      <Box sx={{display:"flex", justifyContent:"flex-end", alignItems:"center", gap: "8px", py: "48px"}}>
+        <SortSelect onSortChange={handleSortChange} />
+        <PokemonFilter selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
+      </Box>
       <Grid2
         container
         spacing={2}
